@@ -14,7 +14,7 @@ class Store(models.Model):
 
 class Log(models.Model):
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     # 商品の情報
     product = models.CharField(max_length=200)
