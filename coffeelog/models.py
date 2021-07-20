@@ -9,12 +9,11 @@ class Store(models.Model):
     store = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.product
+        return self.store
 
 
 class Log(models.Model):
-    author = models.ForeignKey(
-    settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     # 商品の情報
     product = models.CharField(max_length=200)
