@@ -8,3 +8,5 @@ from .models import Log
 class LogDetail(generic.DetailView):
     model = Log
     context_object_name = 'log'
+
+

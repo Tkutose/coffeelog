@@ -26,5 +26,13 @@
     <p class="log__note" >コメント:{{ log.note }}</p>
     
 </div>  
+{% endblock %}
+
+
+{% block sub %}
+<div class="other">
+{{ log.store|store_other_log:log.id }}
+
+</div>
 
 {% endblock %}

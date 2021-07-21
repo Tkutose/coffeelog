@@ -1,3 +1,4 @@
+from coffeelog.models import Log, Store
 from django import template
 
 register = template.Library()
@@ -25,3 +26,10 @@ def out_temperature(bool):
         return 'HOT'
     else:
         return 'ICE'
+
+
+
+@register.filter(name="store_other_log")
+def get_store_other(store, id):
+    log = Log.objects.filter(store__store=store).exclude(id=id)
+    return "まだ登録されていませんでした" if not log else log
