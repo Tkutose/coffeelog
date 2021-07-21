@@ -19,7 +19,6 @@ class Log(models.Model):
     product = models.CharField(max_length=200)
     price = models.IntegerField()
     hot = models.BooleanField()
-    size = models.CharField(max_length=20)
 
     # 苦味
     bitter = models.IntegerField()
