@@ -4,5 +4,5 @@ from . import views
 app_name = 'coffeelog'
 
 urlpatterns = [
-    path('', views.LogList.as_view(), name='logs'), 
+    path('details/<int:pk>', views.LogDetail.as_view(), name='detail'),
 ]

@@ -28,9 +28,17 @@ time, mark, audio, video {
     background:transparent;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
+    width: 100%;
+    height: 100%;
     line-height:1;
 }
+
 
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {

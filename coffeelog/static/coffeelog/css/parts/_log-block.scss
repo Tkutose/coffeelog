@@ -1,0 +1,20 @@
+.log {
+    margin: 30px;
+}
+
+.log__product {
+    font-size: 130%;
+
+    &--ice {
+        background-color: #89e7eb;
+    }
+    
+    &--hot {
+        background-color: #eb8989;
+    }
+}
+
+.log__shop {
+    color: gray;
+}
+

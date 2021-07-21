@@ -1,0 +1,30 @@
+{% extends 'coffeelog/base.html' %}
+{% load coffeelog.func_libs %}
+
+{% block title %}{{ log.product }} {% endblock %}
+
+{% block top %}
+<div class="top top--{{log.hot|hot_or_ice}}">
+<p class="top__text">{{ log.product }}</p>
+<p class="top__date">{{ log.date }}</p>
+</div>
+{% endblock %}
+
+
+
+{% block main %}
+<div class="log">
+    <p class="log__product">{{ log.product }}&emsp;￥{{ log.price }}</p>
+    <p class="log__shop" >{{ log.store }}</p>
+    <div class="flavor">
+        <p class="flavor__bitter">苦味:{{ log.bitter|change_star}}  </p>
+        <p class="flavor__acid">  酸味:{{ log.acidity|change_star}} </p>
+        <p class="flavor__smell"> 香り:{{ log.smell|change_star}}   </p>
+        <p class="flavor__after"> 後味:{{ log.after|change_star}}   </p>
+        <p class="flavor__like">  好み:{{ log.likely|change_star}}  </p>
+    </div>
+    <p class="log__note" >コメント:{{ log.note }}</p>
+    
+</div>  
+
+{% endblock %}

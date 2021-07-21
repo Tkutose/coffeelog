@@ -1,0 +1,138 @@
+.header {
+  background-color: beige;
+  text-align: center;
+}
+
+.header__text {
+  font-size: 140%;
+  margin-bottom: 15px;
+  padding-top: 15px;
+}
+
+.log {
+  margin: 30px;
+}
+
+.log__product {
+  font-size: 130%;
+}
+
+.log__product--ice {
+  background-color: #89e7eb;
+}
+
+.log__product--hot {
+  background-color: #eb8989;
+}
+
+.log__shop {
+  color: gray;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main__content {
+  width: 65%;
+}
+
+.main__sub {
+  width: 35%;
+}
+
+.navigate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.navigate__top {
+  border: solid #d3d3d3 1px;
+  font-size: 100%;
+  height: 40%;
+  padding: 7px;
+  text-align: center;
+  width: 100%;
+  background-color: #facf989d;
+}
+
+.navigate__list {
+  border: solid #d3d3d3 1px;
+  font-size: 100%;
+  height: 40%;
+  padding: 7px;
+  text-align: center;
+  width: 100%;
+  background-color: #facf9880;
+}
+
+.navigate__shop {
+  border: solid #d3d3d3 1px;
+  font-size: 100%;
+  height: 40%;
+  padding: 7px;
+  text-align: center;
+  width: 100%;
+  background-color: #facf989d;
+}
+
+.navigate__taste {
+  border: solid #d3d3d3 1px;
+  font-size: 100%;
+  height: 40%;
+  padding: 7px;
+  text-align: center;
+  width: 100%;
+  background-color: #facf9880;
+}
+
+.navigate__hot {
+  border: solid #d3d3d3 1px;
+  font-size: 100%;
+  height: 40%;
+  padding: 7px;
+  text-align: center;
+  width: 100%;
+  background-color: #facf989d;
+}
+
+.top {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 12%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 30px;
+  width: 60%;
+}
+
+.top--ice {
+  background-color: #89e8ebab;
+}
+
+.top--hot {
+  background-color: #eb8989b6;
+}
+
+.top__text {
+  font-size: 150%;
+}
+
+.top__date {
+  font-size: 80%;
+}

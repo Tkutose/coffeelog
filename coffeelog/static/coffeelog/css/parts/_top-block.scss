@@ -1,0 +1,26 @@
+.top{
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        height: 12%;
+        justify-content: space-around;
+        padding: 30px;
+        width: 60%;
+
+    &--ice {
+        background-color: #89e8ebab;
+    }
+    
+    &--hot {
+        background-color: #eb8989b6;
+    }
+}
+
+.top__text{
+    font-size: 150%;
+}
+
+.top__date{
+    font-size: 80%;
+
+}

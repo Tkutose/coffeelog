@@ -4,20 +4,36 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>coffeelog</title>
+    <title>Coffee Logs | {% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'coffeelog/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'coffeelog/css/style.css' %}" />
 </head>
 
 <body>
+    <header class="header">
+        <div class="header__text">Coffee Log</div>
+        <div class="navigate">
+            <div class="navigate__top">Top</div>
+            <div class="navigate__list">All Log</div>
+            <div class="navigate__shop">Serch:shop</div>
+            <div class="navigate__taste">Serch:taste</div>
+            <div class="navigate__hot">Serch:hot or ice</div>
+        </div>
+    </header>
 
-    <div>
-        <p class="title">Coffee Logs</p>
-    </div>
-
-    <div class="logs">
-        {% block content %}
+        {% block top %}
         {% endblock %}
+    <div class="main">
+            
+        <div class="main__content">
+            {% block main %}
+            {% endblock %}
+        </div>
+    
+        <div class="main__sub">
+            {% block sub %}
+            {% endblock %}
+        </div>
     </div>
-
 </body>

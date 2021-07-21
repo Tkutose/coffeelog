@@ -1,0 +1,44 @@
+@mixin block {
+    border: solid #d3d3d3 1px;
+    font-size: 100%;
+    height: 40%;     
+    padding: 7px;
+    text-align: center;
+    width: 100%;
+}
+
+$_stripe1: #facf989d;
+$_stripe2: #facf9880;
+
+
+.navigate {
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+}
+
+.navigate__top {
+    @include block;
+    background-color: $_stripe1;
+}
+
+.navigate__list{
+    @include block;
+    background-color: $_stripe2;
+}
+
+.navigate__shop{
+    @include block;
+    background-color: $_stripe1;
+}
+
+.navigate__taste{
+    @include block;
+    background-color: $_stripe2;
+}
+
+.navigate__hot{
+    @include block;
+    background-color: $_stripe1;
+
+}
