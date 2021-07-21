@@ -1,0 +1,10 @@
+{% extends 'coffeelog/base.html' %}
+
+{% block content %}
+<ul>
+    {% for log in log_list %}
+    <li>{{ log.product }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
