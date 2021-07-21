@@ -4,10 +4,6 @@ from .models import Log
 
 # Create your views here.
 
-class Index(TemplateView):
-    template_name = 'coffeelog/index.html'
-
-    
 class LogList(ListView):
     model = Log
     context_object_name = 'log_list'
