@@ -22,6 +22,6 @@ def change_star(column):
 @register.filter(name ="hot_or_ice")
 def out_temperature(bool):
     if bool:
-        return 'hot'
+        return 'HOT'
     else:
-        return 'ice'
+        return 'ICE'

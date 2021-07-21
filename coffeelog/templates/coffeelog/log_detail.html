@@ -5,7 +5,7 @@
 
 {% block top %}
 <div class="top top--{{log.hot|hot_or_ice}}">
-<p class="top__text">{{ log.product }}</p>
+<p class="top__text">{{ log.product }}&emsp;{{log.hot|hot_or_ice}}</p>
 <p class="top__date">{{ log.date }}</p>
 </div>
 {% endblock %}

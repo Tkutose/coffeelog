@@ -17,14 +17,6 @@
   font-size: 130%;
 }
 
-.log__product--ice {
-  background-color: #89e7eb;
-}
-
-.log__product--hot {
-  background-color: #eb8989;
-}
-
 .log__shop {
   color: gray;
 }
