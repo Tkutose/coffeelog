@@ -1,5 +1,4 @@
 .header {
-  background-color: beige;
   text-align: center;
 }
 
@@ -19,6 +18,17 @@
 
 .log__shop {
   color: gray;
+}
+
+.other {
+  border: solid 1px #4e4e4e;
+  font-size: 115%;
+  height: 100%;
+  padding: 30px;
+}
+
+.other__list {
+  list-style-type: none;
 }
 
 .main {
@@ -110,7 +120,6 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 30px;
-  width: 60%;
 }
 
 .top--ice {

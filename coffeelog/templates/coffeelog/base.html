@@ -22,11 +22,13 @@
         </div>
     </header>
 
-        {% block top %}
-        {% endblock %}
+
     <div class="main">
-            
+        
         <div class="main__content">
+            {% block top %}
+            {% endblock %}
+
             {% block main %}
             {% endblock %}
         </div>

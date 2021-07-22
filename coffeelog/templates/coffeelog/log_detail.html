@@ -4,9 +4,12 @@
 {% block title %}{{ log.product }} {% endblock %}
 
 {% block top %}
+
+
+
 <div class="top top--{{log.hot|hot_or_ice}}">
-<p class="top__text">{{ log.product }}&emsp;{{log.hot|hot_or_ice}}</p>
-<p class="top__date">{{ log.date }}</p>
+    <p class="top__text">{{log.hot|hot_or_ice}}&emsp;{{ log.product }}</p>
+    <p class="top__date">{{ log.date }}</p>
 </div>
 {% endblock %}
 
@@ -31,7 +34,12 @@
 
 {% block sub %}
 <div class="other">
-    {{ other }}
+    <div class="other__name">{{ log.store }}の他の商品はこちら</div>
+    <ul class="other__list">
+    {% for item in other %}
+        <li><a href="{% url 'coffeelog:detail' item.id %}">{{item.hot|hot_or_ice}}&emsp;{{item.product}}</a></li>
+    {% endfor %}
+    </ul>
 </div>
 
 {% endblock %}
