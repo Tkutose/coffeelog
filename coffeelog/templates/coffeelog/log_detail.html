@@ -34,10 +34,11 @@
 
 {% block sub %}
 <div class="other">
-    <div class="other__name">{{ log.store }}の他の商品はこちら</div>
+    <div class="other__name">{{ log.store }}の<br>他の商品</div>
     <ul class="other__list">
     {% for item in other %}
         <li><a href="{% url 'coffeelog:detail' item.id %}">{{item.hot|hot_or_ice}}&emsp;{{item.product}}</a></li>
+        <hr />
     {% endfor %}
     </ul>
 </div>
