@@ -1,0 +1,25 @@
+@mixin flavor_detail {
+    margin: 10px;
+}
+
+.flavor {
+    font-size: 135%;
+    margin: 10px;
+}
+
+.flavor__bitter {
+    @include flavor_detail;
+}
+
+.flavor__acid {
+    @include flavor_detail;
+}
+.flavor__smell {
+    @include flavor_detail;
+}
+.flavor__after {
+    @include flavor_detail;
+}
+.flavor__like {
+    @include flavor_detail;
+}
