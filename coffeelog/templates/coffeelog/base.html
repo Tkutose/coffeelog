@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Coffee Logs | {% block title %}{% endblock %}</title>
+    <title>Coffee Log | {% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'coffeelog/css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'coffeelog/css/style.css' %}" />
@@ -34,8 +34,9 @@
         </div>
     
         <div class="main__sub">
-            {% block sub %}
-            {% endblock %}
+                {% block sub %}
+                {% endblock %}
         </div>
+        
     </div>
 </body>

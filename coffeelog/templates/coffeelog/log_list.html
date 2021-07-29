@@ -1,0 +1,40 @@
+{% extends 'coffeelog/base.html' %}
+{% load coffeelog.func_libs %}
+
+
+{% block title %} Top {% endblock %}
+
+{% block top %}
+<div class="top top--list">
+    <p class="top__text">Coffee Log 一覧</p>
+</div>
+{% endblock %}
+
+{% block main %}
+
+<ul>
+    {% for log in log_list %}
+        <li class="items">
+            <div class="items__shop">{{ log.store }}</div>
+            <a href="{% url 'coffeelog:detail' log.id %}">
+                <div class="items__name">{{log.hot|hot_or_ice}}&nbsp;{{ log.product }}&emsp;￥{{ log.price }}</div>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+{% block sub %}
+
+<div class="other">
+    <div class="other__name">Logが投稿されている店舗一覧</div>
+    <ul class="other__list">
+    {% for store in stores %}
+        <li class="stores__item">{{ store }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

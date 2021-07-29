@@ -52,6 +52,23 @@
   margin: 30px 10px;
 }
 
+.items {
+  list-style-type: none;
+  margin: 40px;
+}
+
+.items__shop {
+  color: gray;
+}
+
+.items__name {
+  font-size: 125%;
+}
+
+.stores {
+  list-style-type: none;
+}
+
 .other {
   border: solid 1px #7e7e7e;
   height: 100%;
@@ -166,6 +183,10 @@
 
 .top--hot {
   background-color: #ec9b9bb6;
+}
+
+.top--list {
+  background-color: #d0ffb5;
 }
 
 .top__text {
