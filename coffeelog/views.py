@@ -12,8 +12,7 @@ class LogDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = context.get('object')
-        log = Log.objects.filter(store__store=obj.store).exclude(id=obj.id)
-        context['other'] = "まだ登録されていませんでした" if not log else log
+        context['other'] = Log.objects.filter(store__store=obj.store).exclude(id=obj.id)
         return context
 
 
