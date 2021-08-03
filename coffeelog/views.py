@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from django.views import generic
 from .models import Log, Store
 from .forms import LogForm
@@ -34,5 +34,22 @@ class LogCreate(generic.CreateView):
     template_name = 'coffeelog/log_new.html'
     form_class = LogForm
     model = Log
-    success_url = '/details/1'
+    success_url = '/details/'
 
+    def get_form(self):
+        form = super(LogCreate, self).get_form()
+        form.fields['store'].label = '店名'
+        form.fields['store'].label = '店名'
+        form.fields['product'].label = '商品名'
+        form.fields['price'].label = '価格'
+        form.fields['hot'].label = 'hotならチェック'
+        form.fields['bitter'].label = '苦味'
+        form.fields['acidity'].label = '酸味'
+        form.fields['smell'].label = '香り'
+        form.fields['after'].label = '後味'
+        form.fields['likely'].label = '個人的な好み'
+        form.fields['note'].label = '備考'
+        return form
+
+    def get_success_url(self):
+        return reverse('coffeelog:detail', kwargs={'pk': self.object.id})

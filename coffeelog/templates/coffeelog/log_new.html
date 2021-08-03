@@ -1,4 +1,6 @@
 {% extends 'coffeelog/base.html' %}
+{% load coffeelog.func_libs %}
+
 
 {% block title %} New Log {% endblock %}
 
@@ -7,6 +9,59 @@
     <p class="top__text">新規Log</p>
 </div>
 {% endblock %}
+
+{% block main %}
+<form method="POST" class="logform">
+{% csrf_token %}
+    <div class="new">
+        <div class="new__summary">        
+            <p class="logform__explain">商品の基本情報を入力してください。</p>
+
+                <p class="logform__text">{{ form.store.label }}:</p>
+                {{ form.store | form_add_class:'logform' }}
+                
+                <p class="logform__text">{{ form.product.label }}:</p>
+                {{ form.product | form_add_class:'logform' }}
+                
+                <p class="logform__text">{{ form.price.label }}（通常サイズの価格）:</p>
+                {{ form.price | form_add_class:'logform' }}
+                
+                <br>
+                {{ form.hot.label }}:
+                {{ form.hot | form_add_class:'logform' }}
+        </div>
+        
+        <div class="new__taste">
+
+            <p class="logform__explain">味に関する値を１～５で入力してください。</p>
+
+            <p class="logform__text">{{ form.bitter.label }}:</p>
+            {{ form.bitter | form_add_class:'logform' }}
+
+            <p class="logform__text">{{ form.acidity.label }}:</p>
+            {{ form.acidity | form_add_class:'logform' }}
+
+            <p class="logform__text">{{ form.smell.label }}:</p>
+            {{ form.smell | form_add_class:'logform' }}
+
+            <p class="logform__text">{{ form.after.label }}:</p>
+            {{ form.after | form_add_class:'logform' }}
+
+            <p class="logform__text">{{ form.likely.label }}:</p>
+            {{ form.likely | form_add_class:'logform' }}
+
+            <p class="logform__text">{{ form.note.label }}:</p>
+            {{ form.note | form_add_class:'logform' }}
+
+            
+            <button type="submit" class="logform__submit">Add Log</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+
+
 
 {% block sub %}
 <div class="main__sub--none">

@@ -22,23 +22,17 @@ $_stripe2: #facf9880;
     background-color: $_stripe1;
 }
 
-.navigate__list{
+.navigate__new{
     @include block;
     background-color: $_stripe2;
 }
 
-.navigate__shop{
+.navigate__all{
     @include block;
     background-color: $_stripe1;
 }
 
-.navigate__taste{
+.navigate__search{
     @include block;
     background-color: $_stripe2;
-}
-
-.navigate__hot{
-    @include block;
-    background-color: $_stripe1;
-
 }

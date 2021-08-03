@@ -52,6 +52,82 @@
   margin: 30px 10px;
 }
 
+.logform__store {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__product {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__price {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__hot {
+  font-size: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.logform__store {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__note {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__bitter {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__acidity {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__smell {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__after {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__likely {
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.logform__submit {
+  background-color: #f77a27;
+  border: none;
+  color: #fff;
+  font-size: 120%;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+
+.logform__submit:hover {
+  background-color: #e6701c;
+  color: #fff;
+}
+
+.logform__explain {
+  font-size: 100%;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
 .items {
   list-style-type: none;
   margin: 40px;
@@ -104,6 +180,23 @@
   display: none;
 }
 
+.new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 30px 50px;
+}
+
+.new__summary {
+  padding-left: 10%;
+  width: 50%;
+}
+
+.new__taste {
+  padding-right: 20%;
+  width: 50%;
+}
+
 .navigate {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -124,7 +217,7 @@
   background-color: #facf989d;
 }
 
-.navigate__list {
+.navigate__new {
   border: solid #d3d3d3 1px;
   font-size: 100%;
   height: 40%;
@@ -134,7 +227,7 @@
   background-color: #facf9880;
 }
 
-.navigate__shop {
+.navigate__all {
   border: solid #d3d3d3 1px;
   font-size: 100%;
   height: 40%;
@@ -144,7 +237,7 @@
   background-color: #facf989d;
 }
 
-.navigate__taste {
+.navigate__search {
   border: solid #d3d3d3 1px;
   font-size: 100%;
   height: 40%;
@@ -152,16 +245,6 @@
   text-align: center;
   width: 100%;
   background-color: #facf9880;
-}
-
-.navigate__hot {
-  border: solid #d3d3d3 1px;
-  font-size: 100%;
-  height: 40%;
-  padding: 7px;
-  text-align: center;
-  width: 100%;
-  background-color: #facf989d;
 }
 
 .top {

@@ -1,6 +1,6 @@
-from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -13,7 +13,6 @@ class Store(models.Model):
 
 
 class Log(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     # 商品の情報
     product = models.CharField(max_length=200)
@@ -21,15 +20,15 @@ class Log(models.Model):
     hot = models.BooleanField()
 
     # 苦味
-    bitter = models.IntegerField()
+    bitter = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     # 酸味
-    acidity = models.IntegerField()
+    acidity = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     # 香り
-    smell = models.IntegerField()
+    smell = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     # 後味
-    after = models.IntegerField()
+    after = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     # 好み
-    likely = models.IntegerField()
+    likely = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     # 備考
     note = models.TextField()
 
