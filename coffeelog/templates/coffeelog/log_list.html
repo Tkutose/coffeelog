@@ -27,14 +27,15 @@
 
 
 {% block sub %}
-
-<div class="other">
-    <div class="other__name">Logが投稿されている店舗一覧</div>
-    <ul class="other__list">
-    {% for store in stores %}
-        <li class="stores__item">{{ store }}</li>
-        {% endfor %}
-    </ul>
+<div class="main__sub">
+    <div class="other">
+        <div class="other__name">Logが投稿されている店舗一覧</div>
+        <ul class="other__list">
+        {% for store in stores %}
+            <li class="stores__item">{{ store }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
 {% endblock %}

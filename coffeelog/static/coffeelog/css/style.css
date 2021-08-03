@@ -93,11 +93,15 @@
 }
 
 .main__content {
-  width: 65%;
+  width: 100%;
 }
 
 .main__sub {
   width: 35%;
+}
+
+.main__sub--none {
+  display: none;
 }
 
 .navigate {
@@ -187,6 +191,10 @@
 
 .top--list {
   background-color: #d0ffb5;
+}
+
+.top--new {
+  background-color: #fff3bf;
 }
 
 .top__text {

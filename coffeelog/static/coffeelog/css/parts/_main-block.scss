@@ -3,9 +3,13 @@
 }
 
 .main__content {
-    width: 65%;
+    width: 100%;
 }
 
 .main__sub {
     width: 35%;
+    
+    &--none{
+        display: none;
+    }
 }
