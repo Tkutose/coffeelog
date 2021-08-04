@@ -13,7 +13,7 @@
 
 <body>
     <header class="header">
-        <div class="header__text">Coffee Log</div>
+        <a class="header__text" href="{% url 'coffeelog:list' %}">Coffee Log </a>
         <div class="navigate">
             <a class="navigate__top" href="{% url 'coffeelog:list' %}" > Top</a>
             <a class="navigate__new" href="{% url 'coffeelog:new' %}" > New Log</a>
@@ -38,4 +38,12 @@
         </div>
         
     </div>
+
+    <div class="footer">
+        <p class="footer__text">ここに掲載されているLogは全て個人的な感想であり、価値や評価を表すものではありません。</p>
+        <p class="footer__name">Tkutose 2021</p>
+    </div>
+
 </body>
+
+</html>

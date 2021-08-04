@@ -5,6 +5,11 @@
 
 
 .logform__store {
+    font-size: 100%;
+    margin-bottom: 10px;
+}
+
+.logform__addstore {
     @include form-item();
 }
 
@@ -19,10 +24,6 @@
 .logform__hot {
     @include form-item();
     margin-top: 20px;
-}
-
-.logform__store {
-    @include form-item();
 }
 
 .logform__note {

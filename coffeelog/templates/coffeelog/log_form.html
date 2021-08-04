@@ -19,6 +19,8 @@
 
                 <p class="logform__text">{{ form.store.label }}:</p>
                 {{ form.store | form_add_class:'logform' }}
+                <p class="logform__addstore"><a href="{% url 'coffeelog:new_store' %}">店が登録されていない場合はこちら</a></p>
+                
                 
                 <p class="logform__text">{{ form.product.label }}:</p>
                 {{ form.product | form_add_class:'logform' }}

@@ -1,0 +1,30 @@
+{% extends 'coffeelog/base.html' %}
+{% load coffeelog.func_libs %}
+
+
+{% block title %} New Store {% endblock %}
+
+{% block top %}
+<div class="top top--new">
+    <p class="top__text">Store 登録</p>
+</div>
+{% endblock %}
+
+{% block main %}
+<form method="POST" class="storeform">
+    {% csrf_token %}
+
+    <p class="storeform__text">{{ form.name.label }}:</p>
+    {{ form.name | form_add_class:'storeform' }}
+
+    <p class="storeform__text">{{ form.address.label }}:</p>
+    {{ form.address | form_add_class:'storeform' }}
+
+    <br>
+    <button type="submit" class="storeform__submit">登録</button>
+</form>
+{% endblock %}
+
+
+{% block sub %}
+{% endblock %}

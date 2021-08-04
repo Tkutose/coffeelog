@@ -1,0 +1,36 @@
+@mixin form-item {
+    font-size: 100%;
+    margin-bottom: 20px;
+}
+
+.storeform {
+    margin: 40px;
+    font-size: 110%;
+}
+
+.storeform__text {
+    margin: 10px;
+}
+
+.storeform__name {
+    @include form-item()
+}
+
+.storeform__address {
+    @include form-item()
+}
+
+.storeform__submit {
+    background-color: #f77a27;
+    border: none;
+    color: #fff;
+    font-size: 110%;
+    margin-bottom: 40px;
+        margin-top: 10px;
+    padding: 5px;
+    
+    &:hover {
+    background-color: rgb(224, 130, 63);
+    color: #fff;
+    }
+}
