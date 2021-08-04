@@ -1,10 +1,15 @@
-@mixin block {
+@mixin nav-block {
     border: solid #d3d3d3 1px;
     font-size: 100%;
     height: 40%;     
     padding: 7px;
     text-align: center;
     width: 100%;
+    text-decoration: none;
+
+    &:hover{
+        background-color: #fadeba80;
+    }
 }
 
 $_stripe1: #facf989d;
@@ -18,21 +23,21 @@ $_stripe2: #facf9880;
 }
 
 .navigate__top {
-    @include block;
+    @include nav-block;
     background-color: $_stripe1;
 }
 
 .navigate__new{
-    @include block;
+    @include nav-block;
     background-color: $_stripe2;
 }
 
-.navigate__all{
-    @include block;
+.navigate__store{
+    @include nav-block;
     background-color: $_stripe1;
 }
 
 .navigate__search{
-    @include block;
+    @include nav-block;
     background-color: $_stripe2;
 }

@@ -27,6 +27,7 @@
         <p class="flavor__like">  好み:{{ log.likely|change_star}}  </p>
     </div>
     <p class="log__note" >コメント:{{ log.note }}</p>
+    <a class="log__edit" href="{% url 'coffeelog:update' log.id %}">edit</a>
     
 </div>  
 {% endblock %}

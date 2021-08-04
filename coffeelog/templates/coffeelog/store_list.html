@@ -1,0 +1,25 @@
+{% extends 'coffeelog/base.html' %}
+
+
+{% block title %} Stote List {% endblock %}
+
+{% block top %}
+<div class="top top--list">
+    <p class="top__text">Logの投稿されたお店 一覧</p>
+</div>
+{% endblock %}
+
+
+{% block main %}
+
+<ul>
+    {% for store in store_list %}
+    <li class="stores">
+        <a href="{% url 'coffeelog:list' %}">
+            <div class="stores__name">{{ store.name }}</div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

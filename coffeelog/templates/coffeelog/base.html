@@ -14,10 +14,10 @@
     <header class="header">
         <div class="header__text">Coffee Log</div>
         <div class="navigate">
-            <div class="navigate__top">Top</div>
-            <div class="navigate__new">New Log</div>
-            <div class="navigate__all">All Log</div>
-            <div class="navigate__search">Search</div>
+            <a class="navigate__top" href="{% url 'coffeelog:list' %}" > Top</a>
+            <a class="navigate__new" href="{% url 'coffeelog:new' %}" > New Log</a>
+            <a class="navigate__store" href="{% url 'coffeelog:store' %}" > Stores</a>
+            <a class="navigate__search" href="{% url 'coffeelog:list' %}" > Search</a>
         </div>
     </header>
 

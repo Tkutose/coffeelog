@@ -6,7 +6,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Store(models.Model):
-    store = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    
+    address = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.store

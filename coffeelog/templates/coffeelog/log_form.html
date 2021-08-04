@@ -6,7 +6,7 @@
 
 {% block top %}
 <div class="top top--new">
-    <p class="top__text">新規Log</p>
+    <p class="top__text">{{ title }}</p>
 </div>
 {% endblock %}
 
@@ -54,16 +54,12 @@
             {{ form.note | form_add_class:'logform' }}
 
             
-            <button type="submit" class="logform__submit">Add Log</button>
+            <button type="submit" class="logform__submit">{{ btn }}</button>
         </div>
     </div>
 </form>
 {% endblock %}
 
 
-
-
 {% block sub %}
-<div class="main__sub--none">
-</div>
 {% endblock %}
