@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.views import generic
+from django.db.models import Count
 from .models import Log, Store
 from .forms import LogForm
 
@@ -17,7 +18,7 @@ class LogDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = context.get('object')
-        context['other'] = Log.objects.filter(store__store=obj.store).exclude(id=obj.id)
+        context['other'] = Log.objects.filter(store__name=obj.store).exclude(id=obj.id)
         return context
 
 
@@ -92,9 +93,9 @@ class LogUpdate(generic.UpdateView):
         context['btn'] = 'Update'
         return context
 
-
     def get_success_url(self):
         return reverse('coffeelog:detail', kwargs={'pk': self.object.id})
+
 
 class StoreList(generic.ListView):
     '''
@@ -104,3 +105,12 @@ class StoreList(generic.ListView):
     model = Store
     context_object_name = 'store_list'
 
+    def get_context_data(self, **kwargs):
+        '''
+        該当する店ごとのLog投稿数をカウント,dict型でcountsに格納
+        '''
+        context = super().get_context_data(**kwargs)
+        context['counts'] = {}
+        for store in Store.objects.annotate(count = Count('log')):
+            context['counts'][store.name] = store.count
+        return context

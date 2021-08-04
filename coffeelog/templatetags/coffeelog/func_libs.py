@@ -38,3 +38,14 @@ def out_form_item(elem, block_name):
     '''
 
     return elem.as_widget(attrs={'class': block_name+ '__' + elem.name})
+
+
+@register.filter(name ='log_count')
+def out_count_log(counts, store_name):
+    '''
+    key:店の名前
+    value:その店のLog投稿数
+    のdictと店の名前を受け取り、投稿数を返す
+    '''
+
+    return counts[store_name]

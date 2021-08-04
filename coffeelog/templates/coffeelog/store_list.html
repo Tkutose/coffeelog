@@ -1,4 +1,5 @@
 {% extends 'coffeelog/base.html' %}
+{% load coffeelog.func_libs %}
 
 
 {% block title %} Stote List {% endblock %}
@@ -15,11 +16,11 @@
 <ul>
     {% for store in store_list %}
     <li class="stores">
-        <a href="{% url 'coffeelog:list' %}">
-            <div class="stores__name">{{ store.name }}</div>
-        </a>
+        <a href="{% url 'coffeelog:list' %}" class="stores__name">{{ store.name }}</a>
+        <p class="stores__count">Log投稿数:{{ counts | log_count:store.name }}</p>
     </li>
     {% endfor %}
 </ul>
+
 
 {% endblock %}

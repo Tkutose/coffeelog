@@ -1,5 +1,12 @@
 .stores {
     list-style-type: none;
+    margin: 40px;
 }
 
+.stores__name {
+    font-size: 125%;
+}
 
+.stores__count {
+    color: gray;
+}
