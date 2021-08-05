@@ -1,4 +1,3 @@
-from django.forms.widgets import SplitDateTimeWidget
 from django.urls import reverse
 from django.views import generic
 from django.db.models import Count

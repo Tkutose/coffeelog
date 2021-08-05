@@ -55,8 +55,11 @@
             <p class="logform__text">{{ form.note.label }}:</p>
             {{ form.note | form_add_class:'logform' }}
 
-            
+            {% if user.is_authenticated %}
             <button type="submit" class="logform__submit">{{ btn }}</button>
+            {% else %}
+            <a href="{% url 'login' %}">ログイン</a>
+            {% endif %}
         </div>
     </div>
 </form>

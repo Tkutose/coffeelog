@@ -1,0 +1,26 @@
+{% extends 'coffeelog/base.html' %}
+
+{% block title %}Login {% endblock %}
+
+
+{% block top %}
+
+<div class="top">
+    <p class="top__text">ログイン</p>
+</div>
+{% endblock %}
+
+{% block main %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endblock %}

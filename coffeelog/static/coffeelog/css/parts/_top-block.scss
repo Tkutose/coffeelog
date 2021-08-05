@@ -15,7 +15,11 @@
     }
 
     &--list {
-        background-color: #d0ffb5;
+        background-color: #c0a386;
+    }
+
+    &--store {
+        background-color: #d4c1ad;
     }
 
     &--new {
@@ -25,6 +29,8 @@
 
 .top__text{
     font-size: 150%;
+    font-weight: bold;
+    color: #000000;
 }
 
 .top__date{

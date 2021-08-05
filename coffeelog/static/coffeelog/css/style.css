@@ -38,10 +38,12 @@
 }
 
 .header {
+  background-color: #976420;
   text-align: center;
 }
 
 .header__text {
+  color: #FFFFFF;
   font-size: 140%;
   display: block;
   text-decoration: none;
@@ -235,12 +237,11 @@
 }
 
 .other {
-  border: solid 1px #7e7e7e;
+  border-left: solid 1px #a7a7a7;
   height: 100%;
 }
 
 .other__name {
-  border-bottom: solid 1px #7e7e7e;
   font-size: 130%;
   height: 12%;
   padding: 30px;
@@ -303,7 +304,7 @@
   text-align: center;
   width: 100%;
   text-decoration: none;
-  background-color: #facf989d;
+  background-color: #ffecd39d;
 }
 
 .navigate__top:hover {
@@ -318,7 +319,7 @@
   text-align: center;
   width: 100%;
   text-decoration: none;
-  background-color: #facf9880;
+  background-color: #ffecd39d;
 }
 
 .navigate__store:hover {
@@ -333,7 +334,7 @@
   text-align: center;
   width: 100%;
   text-decoration: none;
-  background-color: #facf989d;
+  background-color: #ffecd39d;
 }
 
 .navigate__new:hover {
@@ -348,7 +349,7 @@
   text-align: center;
   width: 100%;
   text-decoration: none;
-  background-color: #facf9880;
+  background-color: #ffecd39d;
 }
 
 .navigate__search:hover {
@@ -381,7 +382,11 @@
 }
 
 .top--list {
-  background-color: #d0ffb5;
+  background-color: #c0a386;
+}
+
+.top--store {
+  background-color: #d4c1ad;
 }
 
 .top--new {
@@ -390,6 +395,8 @@
 
 .top__text {
   font-size: 150%;
+  font-weight: bold;
+  color: #000000;
 }
 
 .top__date {

@@ -21,7 +21,11 @@
     {{ form.address | form_add_class:'storeform' }}
 
     <br>
+    {% if user.is_authenticated %}
     <button type="submit" class="storeform__submit">登録</button>
+    {% else %}
+    <a href="{% url 'login' %}">ログイン</a>
+    {% endif %}
 </form>
 {% endblock %}
 

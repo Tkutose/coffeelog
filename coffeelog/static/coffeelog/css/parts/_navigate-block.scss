@@ -12,8 +12,7 @@
     }
 }
 
-$_stripe1: #facf989d;
-$_stripe2: #facf9880;
+$_stripe: #ffecd39d;
 
 
 .navigate {
@@ -24,20 +23,20 @@ $_stripe2: #facf9880;
 
 .navigate__top {
     @include nav-block;
-    background-color: $_stripe1;
+    background-color: $_stripe;
 }
 
 .navigate__store{
     @include nav-block;
-    background-color: $_stripe2;
+    background-color: $_stripe;
 }
 
 .navigate__new{
     @include nav-block;
-    background-color: $_stripe1;
+    background-color: $_stripe;
 }
 
 .navigate__search{
     @include nav-block;
-    background-color: $_stripe2;
+    background-color: $_stripe;
 }
