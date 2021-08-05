@@ -18,10 +18,9 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+
+SECRET_KEY = '0oz$c1x)v-i9*^rbuv!py2c(=3$41&_x+lsehy+@_=n@n6)9@y'
+
 
 
 # Quick-start development settings - unsuitable for production
