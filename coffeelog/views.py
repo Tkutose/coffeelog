@@ -1,6 +1,8 @@
+from django.forms.widgets import SplitDateTimeWidget
 from django.urls import reverse
 from django.views import generic
 from django.db.models import Count
+from django.http import Http404
 from .models import Log, Store
 from .forms import LogForm, StoreForm
 
@@ -104,3 +106,41 @@ class StoreCreate(generic.CreateView):
 
     def get_success_url(self):
         return reverse('coffeelog:new')
+
+
+class SearchList(generic.ListView):
+    '''
+    指定されたキーワードで絞込み検索を行い、結果を表示する
+    '''
+    template_name = 'coffeelog/search_list.html'
+    model = Log
+
+
+    def get_context_data(self, **kwargs):
+        '''
+        type:並び替えならsort、絞り込みならnarrow
+        col:列名
+        target:条件
+        '''
+        context = super().get_context_data(**kwargs)
+        type = self.request.GET['type']
+        col = self.request.GET['col']
+        target = self.request.GET['target']
+        context['col'] = col
+        try:
+            if(type=='narrow'):
+                context['results'] = Log.objects.filter(**{col: target})
+                context['kind'] = ':{}の絞り込み結果'.format(target)
+
+            elif(target=='asc'):
+                context['results'] = Log.objects.order_by(col)
+                context['kind'] = 'の並び替え結果(昇順)'
+
+            elif(target=='desc'):
+                context['results'] = Log.objects.order_by(col).reverse()
+                context['kind'] = 'の並び替え結果(降順)'
+
+        except ValueError:
+            raise Http404("検索結果が見つかりませんでした。")
+
+        return context

@@ -27,12 +27,12 @@ $_stripe2: #facf9880;
     background-color: $_stripe1;
 }
 
-.navigate__new{
+.navigate__store{
     @include nav-block;
     background-color: $_stripe2;
 }
 
-.navigate__store{
+.navigate__new{
     @include nav-block;
     background-color: $_stripe1;
 }

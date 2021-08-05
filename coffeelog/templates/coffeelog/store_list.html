@@ -6,7 +6,7 @@
 
 {% block top %}
 <div class="top top--list">
-    <p class="top__text">Logの投稿されたお店 一覧</p>
+    <p class="top__text">Logの投稿されたお店</p>
 </div>
 {% endblock %}
 
@@ -16,7 +16,7 @@
 <ul>
     {% for store in store_list %}
     <li class="stores">
-        <a href="{% url 'coffeelog:list' %}" class="stores__name">{{ store.name }}</a>
+        <a href="{% url 'coffeelog:search' %}?type=narrow&col=store__name&target={{store.name}}" class="stores__name">{{ store.name }}</a>
         <p class="stores__count">Log投稿数:{{ counts | log_count:store.name }}</p>
     </li>
     {% endfor %}

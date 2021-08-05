@@ -1,7 +1,18 @@
 from coffeelog.models import Log, Store
 from django import template
+from datetime import datetime as dt
 
 register = template.Library()
+
+jp_dict ={
+    'bitter':'苦味',
+    'acidity':'酸味',
+    'smell':'香り',
+    'after':'後味',
+    'likely':'個人的な好み',
+    'store__name':'店名',
+    'date':'投稿日'
+}
 
 @register.filter(name ="change_star")
 def change_star(column):
@@ -30,6 +41,7 @@ def out_temperature(bool):
     else:
         return 'ICE'
 
+
 @register.filter(name ='form_add_class')
 def out_form_item(elem, block_name):
     '''
@@ -49,3 +61,28 @@ def out_count_log(counts, store_name):
     '''
 
     return counts[store_name]
+
+
+@register.filter(name ='get_col')
+def out_column_data(log, col):
+    '''
+    Logのオブジェクトとカラム名を受け取って
+    検索のために辞書型に変換後
+    そのカラムの日本語名と値を返す
+    '''
+    if col=='store__name':
+        return ''
+
+    if col=='date':
+        return out_jp_col(col)+':'+log.__dict__[col].strftime('%Y/%m/%d')
+
+    return out_jp_col(col)+':'+str(log.__dict__[col])
+
+
+@register.filter(name ='col_jp')
+def out_jp_col(col):
+    '''
+    カラム名を日本語に変換
+    '''
+
+    return jp_dict[col]

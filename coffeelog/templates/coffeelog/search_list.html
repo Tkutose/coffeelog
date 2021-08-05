@@ -1,0 +1,55 @@
+{% extends 'coffeelog/base.html' %}
+{% load coffeelog.func_libs %}
+
+
+{% block title %} Top {% endblock %}
+
+{% block top %}
+<div class="top top--list">
+    <p class="top__text">{{ col | col_jp }}{{ kind }}</p>
+</div>
+{% endblock %}
+
+
+{% block main %}
+
+<ul>
+    {% for log in results %}
+    <li class="items">
+        <div class="items__shop">{{ log | get_col:col }}</div>
+        <a href="{% url 'coffeelog:detail' log.id %}">
+            <div class="items__name">{{log.hot|hot_or_ice}}&nbsp;{{ log.product }}&emsp;￥{{ log.price }}</div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+
+{% block sub %}
+<div class="main__sub">
+    <form class="sort" method="GET" action="{% url 'coffeelog:search' %}">
+    <p class="sort__title">別条件で検索する</p>
+    <input type="hidden" name="type" value="sort">
+    <div class="sort__col">
+            条件を選択してください。    
+            <select name="col">
+                <option value="bitter">苦味</option>
+                <option value="acidity">酸味</option>
+                <option value="smell">香り</option>
+                <option value="after">後味</option>
+                <option value="likely">個人的な好み</option>
+                <option value="date">投稿日</option>
+            </select>
+        </div>
+    
+        <div class="sort__target">
+            <input type="radio" name="target" value="asc" checked>昇順
+            <input type="radio" name="target" value="desc">降順
+        </div>
+        <input type="submit" value="並び替え">
+    
+    </form>
+</div>
+{% endblock %}

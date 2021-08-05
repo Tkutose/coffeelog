@@ -16,9 +16,9 @@
         <a class="header__text" href="{% url 'coffeelog:list' %}">Coffee Log </a>
         <div class="navigate">
             <a class="navigate__top" href="{% url 'coffeelog:list' %}" > Top</a>
-            <a class="navigate__new" href="{% url 'coffeelog:new' %}" > New Log</a>
             <a class="navigate__store" href="{% url 'coffeelog:store' %}" > Stores</a>
-            <a class="navigate__search" href="{% url 'coffeelog:list' %}" > Search</a>
+            <a class="navigate__new" href="{% url 'coffeelog:new' %}" > New Log</a>
+            <a class="navigate__search" href="{% url 'coffeelog:search' %}?type=sort&col=date&target=desc" > Search</a>
         </div>
     </header>
 

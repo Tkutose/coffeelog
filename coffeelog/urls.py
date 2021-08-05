@@ -10,4 +10,5 @@ urlpatterns = [
     path('new/store', views.StoreCreate.as_view(), name='new_store'),
     path('update/<int:pk>', views.LogUpdate.as_view(), name='update'),
     path('store/', views.StoreList.as_view(), name='store'),
+    path('search/', views.SearchList.as_view(), name='search'),
 ]
