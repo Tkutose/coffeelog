@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import environ
+
 
 from pathlib import Path
 import dj_database_url
@@ -18,8 +20,16 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-SECRET_KEY = '0oz$c1x)v-i9*^rbuv!py2c(=3$41&_x+lsehy+@_=n@n6)9@y'
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
+env = environ.Env(DEBUG=(bool, False))
+
+SECRET_KEY = env('SECRET_KEY')
+
+DEBUG = env('DEBUG')
+
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,9 +37,7 @@ SECRET_KEY = '0oz$c1x)v-i9*^rbuv!py2c(=3$41&_x+lsehy+@_=n@n6)9@y'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 # Application definition
 
@@ -81,19 +89,17 @@ WSGI_APPLICATION = 'testsite.wsgi.application'
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'coffeelog',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': os.environ['ENGINE'],
+        'NAME': os.environ['NAME'],
+        'USER': os.environ['USER'],
+        'PASSWORD': os.environ['PASSWORD'],
+        'HOST': os.environ['HOST'],
+        'PORT': os.environ['PORT'],
     }
 }
-
-
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
