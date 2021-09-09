@@ -40,3 +40,28 @@ class Log(models.Model):
     def __str__(self):
         return self.product
     
+
+# APIから自由にLogを投稿・集計するためのクラス
+class UserLog(models.Model):
+    product = models.ForeignKey(Log, on_delete=models.CASCADE)
+
+    # 苦味
+    bitter = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    # 酸味
+    acidity = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    # 香り
+    smell = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    # 後味
+    after = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    # 好み
+    likely = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    # 備考(nullを許可)
+    note = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return 'log('+self.product.product +')' 
