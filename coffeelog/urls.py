@@ -24,7 +24,9 @@ urlpatterns = [
     path('api/log/', views.LogListAPIView.as_view(), name="api_log_list"),
     # 詳細取得
     path('api/log/<int:pk>', views.LogAPIView.as_view(), name="api_log_detail"),
-    path('api/log/update/<int:pk>', views.LogUpdateAPIView.as_view(), name="api_log_update"),
+
+    # 試しで作ったため、ルーティングから除外
+    # path('api/log/update/<int:pk>', views.LogUpdateAPIView.as_view(), name="api_log_update"),
 
     path('api/store/<int:pk>', views.StoreAPIView.as_view(), name="api_store_detail"),
     path('api/coffee/', include(router.urls)),   
