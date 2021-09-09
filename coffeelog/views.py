@@ -1,9 +1,18 @@
+from functools import partial
+from django_filters import rest_framework as filters
+from django.contrib.auth import login
+from coffeelog.serializers import LogSerializer, LogListSerializer, OnlyCoffeeDataSeriarizer, StoreSerializer
+from django.core.exceptions import ValidationError
 from django.urls import reverse
 from django.views import generic
-from django.db.models import Count
-from django.http import Http404
+from django.db.models import Count, fields
+from django.http import Http404, response
+from django.shortcuts import get_object_or_404
+from rest_framework.serializers import Serializer
 from .models import Log, Store
 from .forms import LogForm, StoreForm
+from rest_framework import status, views, viewsets
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -143,3 +152,89 @@ class SearchList(generic.ListView):
             raise Http404("検索結果が見つかりませんでした。")
 
         return context
+
+
+"""
+DRF View
+
+CRUDに対して
+SELECT:GET
+INSERT:POST
+UPDATE:PUT/PATCH
+DELETE:DELETE
+のハンドラがそれぞれ対応している
+"""
+
+class LogFilter(filters.FilterSet):
+    """Logモデル用filter"""
+
+    class Meta:
+        model = Log
+        fields = '__all__'
+
+class LogListAPIView(views.APIView):
+    """Logクラスの一覧取得APIView"""
+
+    def get(self, request, *args, **kwargs):
+        """一覧取得APIに対するハンドラ"""
+
+        filterset = LogFilter(request.query_params, queryset=Log.objects.all() )
+        if not filterset.is_valid():
+            # バリデートでエラーが発生した場合
+            raise ValidationError(filterset.errors)
+
+        # シリアライザオブジェクトを生成(manyでListを指定することも可能)
+        serializer = LogListSerializer(instance=filterset.qs)
+        # serializer = LogSerializer(instance=filterset.qs, many=True)
+
+        # responseを返す
+        return Response(serializer.data, status.HTTP_200_OK)
+
+
+class LogAPIView(views.APIView):
+    """Logクラスの情報取得APIView"""
+
+
+    def get(self, request, pk, *args, **kwargs):
+        """情報取得APIに対するハンドラ(pkの引数付きで呼び出し)"""
+
+        log = get_object_or_404(Log, pk=pk)
+        Serializer = LogSerializer(instance=log)
+        return Response(Serializer.data, status.HTTP_200_OK)
+
+
+class LogUpdateAPIView(views.APIView):
+
+    def patch(self, request, pk, *args, **kwargs):
+        """Logの一部更新（感想部分のみ）を行うAPIView"""
+
+        log = get_object_or_404(Log, pk=pk)
+
+        # requestしたdataで、Logの一部更新を行う
+        serializer = LogSerializer(instance=log, data=request.data, partial=True)
+        
+        # バリデート(感想部分以外はread_only)
+        serializer.is_valid(raise_exception=True)
+
+        # 一部更新
+        serializer.save()
+        return Response(serializer.data, status.HTTP_200_OK)
+
+
+class StoreAPIView(views.APIView):
+    """Storeクラスの情報取得APIView"""
+
+
+    def get(self, request, pk, *args, **kwargs):
+        """Storeクラスの情報取得APIに対するハンドラ(pkの引数付きで呼び出し)"""
+
+        store = get_object_or_404(Store, pk=pk)
+        Serializer = StoreSerializer(instance=store)
+        return Response(Serializer.data, status.HTTP_200_OK)
+
+
+class OnlyCoffeeAPIViewSet(viewsets.ReadOnlyModelViewSet):
+    """Logのコーヒーの情報だけを取得するAPIViewSet(read_only)"""
+
+    queryset = Log.objects.all()
+    serializer_class = OnlyCoffeeDataSeriarizer

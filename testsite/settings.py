@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coffeelog.apps.CoffeelogConfig',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
