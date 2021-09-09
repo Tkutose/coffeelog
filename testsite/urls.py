@@ -20,5 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('coffeelog.urls')),
+    path('api/', include('apiv1.urls')),
     path('login/',  views.LoginView.as_view(), name='login'),
 ]

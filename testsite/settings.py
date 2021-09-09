@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'coffeelog.apps.CoffeelogConfig',
     'rest_framework',
+    'apiv1.apps.Apiv1Config'
 
 ]
 
