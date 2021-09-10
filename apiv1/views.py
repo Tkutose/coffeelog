@@ -6,8 +6,14 @@ from coffeelog.serializers import OnlyCoffeeDataSeriarizer
 from apiv1.serializers import UserLogUpdateSerializer
 
 
-# Create your views here.
+
 
 class UserLogCreateAPIView(generics.CreateAPIView):
     """UserLogクラスの登録APIView(write_only)"""
     serializer_class = UserLogUpdateSerializer
+    
+    # 新規ログ投稿は1時間あたり1件
+    throttle_classes =  {
+        'anon': '1/hour',
+        'user': '10/hour',
+    }

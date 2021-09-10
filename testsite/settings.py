@@ -153,3 +153,11 @@ DATABASES['default'].update(db_from_env)
 
 # ログイン処理後のリダイレクト先
 LOGIN_REDIRECT_URL = '/'
+
+# DRFの設定
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/hour',
+        'user': '1000/hour',
+    }
+}
