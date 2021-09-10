@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from .models import Log, Store
+from .models import Log, Store, UserLog
 from django.utils import timezone
 
 class LogSerializer(serializers.ModelSerializer):
@@ -62,6 +62,7 @@ class StoreSerializer(serializers.ModelSerializer):
             }
         }
 
+# 日付を返すお試しシリアライザ
 class DateAndTimeSerializer(serializers.Serializer):
 
     # get_current_dateメソッドが呼ばれる
@@ -73,3 +74,19 @@ class DateAndTimeSerializer(serializers.Serializer):
 
     def get_current_time(self, obj):
         return timezone.localtime()
+
+
+
+class UserLogSerializer(serializers.ModelSerializer):
+    """UserLogモデルのシリアライザ"""
+
+    class Meta:
+        model = UserLog
+        fields = '__all__'
+
+class UserLogListSerializer(serializers.ListSerializer):
+    """UserLog一覧を取得するシリアライザ"""
+
+    # 対象シリアライザ
+    child = UserLogSerializer()
+

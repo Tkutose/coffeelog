@@ -1,7 +1,7 @@
 from functools import partial
 from django_filters import rest_framework as filters
 from django.contrib.auth import login
-from coffeelog.serializers import LogSerializer, LogListSerializer, OnlyCoffeeDataSeriarizer, StoreSerializer
+from coffeelog.serializers import LogSerializer, LogListSerializer, OnlyCoffeeDataSeriarizer, StoreSerializer, UserLogSerializer, UserLogListSerializer
 from django.core.exceptions import ValidationError
 from django.urls import reverse
 from django.views import generic
@@ -9,8 +9,8 @@ from django.db.models import Count, fields
 from django.http import Http404, response
 from django.shortcuts import get_object_or_404
 from rest_framework.serializers import Serializer
-from .models import Log, Store
-from .forms import LogForm, StoreForm
+from coffeelog.models import Log, Store, UserLog
+from coffeelog.forms import LogForm, StoreForm
 from rest_framework import status, views, viewsets
 from rest_framework.response import Response
 
@@ -238,3 +238,41 @@ class OnlyCoffeeAPIViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = Log.objects.all()
     serializer_class = OnlyCoffeeDataSeriarizer
+
+
+
+class UserLogFilter(filters.FilterSet):
+    """UserLogモデル用filter"""
+
+    class Meta:
+        model = UserLog
+        fields = '__all__'
+
+class UserLogListAPIView(views.APIView):
+    """UserLogクラスの一覧取得APIView"""
+
+    def get(self, request, *args, **kwargs):
+        """一覧取得APIに対するハンドラ"""
+
+        filterset = UserLogFilter(request.query_params, queryset=UserLog.objects.all() )
+        if not filterset.is_valid():
+            # バリデートでエラーが発生した場合
+            raise ValidationError(filterset.errors)
+
+        # シリアライザオブジェクトを生成(manyでListを指定することも可能)
+        serializer = UserLogListSerializer(instance=filterset.qs)
+        # serializer = UserLogSerializer(instance=filterset.qs, many=True)
+
+        # responseを返す
+        return Response(serializer.data, status.HTTP_200_OK)
+
+
+class UserLogAPIView(views.APIView):
+    """UserLogクラスの情報取得APIView"""
+
+    def get(self, request, pk, *args, **kwargs):
+        """情報取得APIに対するハンドラ(pkの引数付きで呼び出し)"""
+
+        user_log = get_object_or_404(UserLog, pk=pk)
+        Serializer = UserLogSerializer(instance=user_log)
+        return Response(Serializer.data, status.HTTP_200_OK)

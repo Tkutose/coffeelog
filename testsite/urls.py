@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('public.urls')),
 
     # Djangoと情報取得API
-    path('coffee-log/', include('coffeelog.urls')),
+    path('coffeelog/', include('coffeelog.urls')),
 
     # 管理者以外のLog投稿用API
     path('log-api/', include('apiv1.urls')),

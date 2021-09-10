@@ -29,5 +29,9 @@ urlpatterns = [
     # path('api/log/update/<int:pk>', views.LogUpdateAPIView.as_view(), name="api_log_update"),
 
     path('api/store/<int:pk>', views.StoreAPIView.as_view(), name="api_store_detail"),
+    path('api/user-log/', views.UserLogListAPIView.as_view(), name="api_userlog_detail"),
+    path('api/user-log/<int:pk>', views.UserLogAPIView.as_view(), name="api_userlog_list"),
     path('api/coffee/', include(router.urls)),   
+
+
 ]
