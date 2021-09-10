@@ -16,10 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import path, include
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('coffeelog.urls')),
-    path('api/', include('apiv1.urls')),
+
+    # vue.jsを使ったページ
+    path('', include('public.urls')),
+
+    # Djangoと情報取得API
+    path('coffee-log/', include('coffeelog.urls')),
+
+    # 管理者以外のLog投稿用API
+    path('log-api/', include('apiv1.urls')),
+
+    # ログインページ(Djangoデフォルト)
     path('login/',  views.LoginView.as_view(), name='login'),
 ]
