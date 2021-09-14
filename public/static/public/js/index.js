@@ -27,6 +27,7 @@ const app = new Vue({
         })
         .then(function (response) {
             this.receivedData = (response.data)
+            console.log(this.receivedData);
         }.bind(this))
 
         // エラー処理
@@ -62,12 +63,16 @@ const app = new Vue({
         },
 
         // 送信するLogのidをセット
-        setProduct: function(id){
-            this.params.product = id;
+        setProduct: function(log){
+            this.params.product = log.id;
+            this.selected.name = log.product;
+            this.selected.price = log.price;
+            this.selected.store = log.store_name;
+            this.selected.hot = log.store_hot;
             this.isSelect = true;
         },
 
-        // 送信するLogのidをセット
+        // Logのidをリセット
         resetProduct: function(){
             this.params.product = null;
             this.isSelect = false;
@@ -81,6 +86,10 @@ const app = new Vue({
             this.params.after = null;
             this.params.likely = null;
             this.params.note = null;
+            this.selected.name = null;
+            this.selected.store = null;
+            this.selected.price = null;
+            this.selected.hot = null;
         }
     },
 
@@ -93,6 +102,13 @@ const app = new Vue({
             after: null,
             likely: null,
             note: null,
+        },
+
+        selected: {
+            name: null,
+            store: null,
+            price: null,
+            hot: null,
         },
 
         errorMessage: '',

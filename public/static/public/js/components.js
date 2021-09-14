@@ -13,7 +13,7 @@ const listComponent = {
                     <span v-else>ICE</span>
                     {{ log.product }}￥{{ log.price }}
                     </p>
-                    <button @click="select(log.id)">この商品のログを投稿する</button>
+                    <button @click="select(log)">この商品のログを投稿する</button>
                     <hr>
                 </div>
                 </li>
@@ -33,8 +33,19 @@ const postComponent = {
     template: `
         <div>
             <hr>
-            <p>Log追加テスト</p>
-            <button @click="back">送信せず選択画面に戻る</button>  
+            <div>
+                <h3>Log追加
+                <p>{{ selected.store }}</p>
+                <p>
+                <span v-if="selected.hot">HOT</span>
+                <span v-else>ICE</span>
+                {{ selected.name }}￥{{ selected.price }}
+                </p>
+                <button @click="back">送信せず選択画面に戻る</button>
+                </h3>  
+            </div>
+                <hr>
+                
             <div>苦味<input type="text" v-model:value="params.bitter"></div>
             <div>酸味<input type="text" v-model:value="params.acidity"></div>
             <div>香り<input type="text" v-model:value="params.smell"></div>
@@ -49,6 +60,7 @@ const postComponent = {
         </div>
     `,
     props: {
+        'selected': Object,
         'params': Object, 
         'message': String,
         'error': String,
