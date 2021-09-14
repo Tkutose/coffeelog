@@ -43,7 +43,7 @@ class OnlyCoffeeDataSeriarizer(serializers.ModelSerializer):
     class Meta:
         model = Log
         # 呼び出すフィールド
-        fields = ['product', 'store', 'price' , 'hot']
+        fields = ['id', 'product', 'store', 'price' , 'hot']
 
 
 class StoreSerializer(serializers.ModelSerializer):

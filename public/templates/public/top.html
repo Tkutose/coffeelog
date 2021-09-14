@@ -1,1 +1,40 @@
-<pre>test0001</pre>
+{% load static %}
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'public/css/top.css' %}" />
+</head>
+
+<body>
+    <h2>Coffee Log</h2>
+    <div id="app">
+        <div v-if="hasError">
+            データを正常に取得できませんでした。
+        </div>
+        <div v-else>
+            <div v-if="isSelect">
+                <post-component
+                    :params="params" 
+                    :message="message" 
+                    :error="errorMessage" 
+                    :post="addNewUserLog"
+                    :back="resetProduct"></post-component>
+            </div>
+
+            <div v-else>
+            <list-component 
+                :list="receivedData"
+                :select="setProduct"></list-component>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 本番用 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script> -->
+
+    <script src="https://unpkg.com/vue@2.6.10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+    <script src="{% static 'public/js/components.js' %}"></script>
+    <script src="{% static 'public/js/index.js' %}"></script>
+</body>
+</html>

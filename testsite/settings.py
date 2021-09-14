@@ -10,12 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from rest_framework.throttling import UserRateThrottle
 import os
 import environ
 
 
 from pathlib import Path
 import dj_database_url
+from rest_framework import throttling
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -156,8 +158,12 @@ LOGIN_REDIRECT_URL = '/'
 
 # DRFの設定
 REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/hour',
-        'user': '1000/hour',
+        'anon': '1/day',
+        'user': '1/day'
     }
 }

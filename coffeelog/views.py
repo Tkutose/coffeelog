@@ -1,6 +1,7 @@
 from functools import partial
 from django_filters import rest_framework as filters
 from django.contrib.auth import login
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from coffeelog.serializers import LogSerializer, LogListSerializer, OnlyCoffeeDataSeriarizer, StoreSerializer, UserLogSerializer, UserLogListSerializer
 from django.core.exceptions import ValidationError
 from django.urls import reverse
@@ -193,7 +194,6 @@ class LogListAPIView(views.APIView):
 
 class LogAPIView(views.APIView):
     """Logクラスの情報取得APIView"""
-
 
     def get(self, request, pk, *args, **kwargs):
         """情報取得APIに対するハンドラ(pkの引数付きで呼び出し)"""

@@ -11,5 +11,5 @@ app_name = 'apiv1'
 
 urlpatterns = [
     # path('coffee', include(router.urls)),
-    path('user-log/new', views.UserLogCreateAPIView.as_view(), name="user-log_new")
+    path('new', views.UserLogCreateAPIView.as_view(), name="user-log_new")
 ]
