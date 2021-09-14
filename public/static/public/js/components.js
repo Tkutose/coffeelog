@@ -7,7 +7,7 @@ const listComponent = {
             <hr>
                 <li v-for="log in list">
                     <div>
-                    <p>{{ log.store }}</p>
+                    <p>{{ log.store_name }}</p>
                     <p>
                     <span v-if="log.hot">HOT</span>
                     <span v-else>ICE</span>

@@ -6,6 +6,9 @@ from django.utils import timezone
 class LogSerializer(serializers.ModelSerializer):
     """Logモデルのシリアライザ"""
 
+    store_name = serializers.ReadOnlyField(source='store.name')
+
+
     class Meta:
         model = Log
         # 呼び出さないフィールド
@@ -25,6 +28,9 @@ class LogSerializer(serializers.ModelSerializer):
             },
             'hot': {
                 'read_only': True
+            },
+            'store_name': {
+                'read_only': True
             }
         }
 
@@ -40,10 +46,12 @@ class LogListSerializer(serializers.ListSerializer):
 class OnlyCoffeeDataSeriarizer(serializers.ModelSerializer):
     """Logから珈琲の情報だけを取得するシリアライザ"""
 
+    store_name = serializers.ReadOnlyField(source='store.name')
+
     class Meta:
         model = Log
         # 呼び出すフィールド
-        fields = ['id', 'product', 'store', 'price' , 'hot']
+        fields = ['id', 'product', 'store_name', 'price' , 'hot']
 
 
 class StoreSerializer(serializers.ModelSerializer):
