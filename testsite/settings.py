@@ -18,6 +18,7 @@ import environ
 from pathlib import Path
 import dj_database_url
 from rest_framework import throttling
+import drf_spectacular
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -50,10 +51,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 作成app
     'coffeelog.apps.CoffeelogConfig',
-    'rest_framework',
     'apiv1.apps.Apiv1Config',
     'public.apps.PublicConfig',
+    
+    # 追加
+    'rest_framework',
+    'drf_spectacular',
 
 ]
 
@@ -158,6 +164,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # DRFの設定
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle'
@@ -165,5 +172,5 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '1/day',
         'user': '1/day'
-    }
+    },
 }

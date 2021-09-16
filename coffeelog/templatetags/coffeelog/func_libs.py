@@ -86,3 +86,14 @@ def out_jp_col(col):
     '''
 
     return jp_dict[col]
+
+
+@register.filter(name ='cut_note')
+def cut_str(str):
+    '''
+    備考欄の文字数を制限し、一定文字以上は...に変換
+    '''
+    if len(str) < 30:
+        return str
+    return str[:30]+"..."
+

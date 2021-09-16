@@ -23,7 +23,7 @@ const app = new Vue({
         // logのリスト取得API呼び出し
         api({
             method: "get",
-            url: "coffeelog/api/coffee/",
+            url: "coffeelog/api/coffee?name=コーヒー",
         })
         .then(function (response) {
             this.receivedData = (response.data)
@@ -41,7 +41,7 @@ const app = new Vue({
                 const vm = this;
             api({
                 method: "POST",
-                url: "log-api/new",
+                url: "userlog/api/new",
                 data: this.params,
             })
             .then(function (response) {
@@ -65,11 +65,11 @@ const app = new Vue({
         // 送信するLogのidをセット
         setProduct: function(log){
             this.params.product = log.id;
+            this.isSelect = true;
             this.selected.name = log.product;
             this.selected.price = log.price;
             this.selected.store = log.store_name;
             this.selected.hot = log.store_hot;
-            this.isSelect = true;
         },
 
         // Logのidをリセット

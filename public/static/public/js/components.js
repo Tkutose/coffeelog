@@ -45,12 +45,12 @@ const postComponent = {
                 </h3>  
             </div>
                 <hr>
-                
+            1~5の5段階で感想を記入してください。
             <div>苦味<input type="text" v-model:value="params.bitter"></div>
             <div>酸味<input type="text" v-model:value="params.acidity"></div>
             <div>香り<input type="text" v-model:value="params.smell"></div>
             <div>後味<input type="text" v-model:value="params.after"></div>
-            <div>個人的な好み<input type="text" v-model:value="params.likely"></div>
+            <div>好み<input type="text" v-model:value="params.likely"></div>
             <div>備考<input type="text" v-model:value="params.note"></div>
             <button @click="post">Log送信</button>
             <p>結果</p>

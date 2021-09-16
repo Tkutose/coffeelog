@@ -29,7 +29,26 @@
     <p class="log__note" >コメント:{{ log.note }}</p>
     <a class="log__edit" href="{% url 'coffeelog:update' log.id %}">edit</a>
     
-</div>  
+</div>
+
+<div class="userLog">
+    <h2 class="userLog__title">投稿されたLog</h2>
+    <hr>
+    <ul>
+        {% for log in user_log %}
+        <li>
+            <span class="userLog__content">苦味:{{ log.bitter }}&nbsp;</span>
+            <span class="userLog__content">酸味:{{ log.acidity }}&nbsp;</span>
+            <span class="userLog__content">香り:{{ log.smell }}&nbsp;</span>
+            <span class="userLog__content">後味:{{ log.after }}&nbsp;</span>
+            <span class="userLog__content">好み:{{ log.likely }}&nbsp;</span>
+            <span class="userLog__content">備考:{{ log.note|cut_note }}</span>
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+</div>
+
 {% endblock %}
 
 

@@ -1,6 +1,7 @@
 from functools import partial
-from django_filters import rest_framework as filters
+from django_filters import filterset, rest_framework as filters
 from django.contrib.auth import login
+from rest_framework.fields import Field
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from coffeelog.serializers import LogSerializer, LogListSerializer, OnlyCoffeeDataSeriarizer, StoreSerializer, UserLogSerializer, UserLogListSerializer
 from django.core.exceptions import ValidationError
@@ -9,7 +10,6 @@ from django.views import generic
 from django.db.models import Count, fields
 from django.http import Http404, response
 from django.shortcuts import get_object_or_404
-from rest_framework.serializers import Serializer
 from coffeelog.models import Log, Store, UserLog
 from coffeelog.forms import LogForm, StoreForm
 from rest_framework import status, views, viewsets
@@ -27,11 +27,13 @@ class LogDetail(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         '''
-        選択した商品と同じ店舗の商品を取得
+        other:選択した商品と同じ店舗の商品を取得
+        userlog:その商品の投稿された記録を取得
         '''
         context = super().get_context_data(**kwargs)
         obj = context.get('object')
         context['other'] = Log.objects.filter(store__name=obj.store).exclude(id=obj.id)
+        context['user_log'] = UserLog.objects.filter(product=obj.id)
         return context
 
 
@@ -168,13 +170,17 @@ DELETE:DELETE
 
 class LogFilter(filters.FilterSet):
     """Logモデル用filter"""
-
+    # 商品名で検索
+    name = filters.CharFilter(field_name="product",lookup_expr='icontains')
+    
     class Meta:
         model = Log
         fields = '__all__'
 
 class LogListAPIView(views.APIView):
     """Logクラスの一覧取得APIView"""
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = LogFilter
 
     def get(self, request, *args, **kwargs):
         """一覧取得APIに対するハンドラ"""

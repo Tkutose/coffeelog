@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import path, include
-from django.views.generic.base import TemplateView
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,8 +29,13 @@ urlpatterns = [
     path('coffeelog/', include('coffeelog.urls')),
 
     # 管理者以外のLog投稿用API
-    path('log-api/', include('apiv1.urls')),
+    path('userlog/', include('apiv1.urls')),
 
     # ログインページ(Djangoデフォルト)
     path('login/',  views.LoginView.as_view(), name='login'),
-]
+
+    #APIリファレンス
+    # path('api/schema/', SpectacularAPIView.as_view(), name="schema"),
+    # path('api/schema/swagger/', SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
+    # path('api/schema/redoc/', SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
+    ]
