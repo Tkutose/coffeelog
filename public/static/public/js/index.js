@@ -3,8 +3,8 @@ axios.defaults.xsrfCookieName = "csrftoken"
 axios.defaults.xsrfHeaderName = "X-CSRFToken"
 
 const api = axios.create({
-    // baseURL:"http://127.0.0.1:8000/",
-    baseURL:"https://tkuto-coffeelog.herokuapp.com/",
+    baseURL:"http://127.0.0.1:8000/",
+    // baseURL:"https://tkuto-coffeelog.herokuapp.com/",
     timeout: 5000,
     headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const app = new Vue({
         // logのリスト取得API呼び出し
         api({
             method: "get",
-            url: "coffeelog/api/coffee?name=コーヒー",
+            url: "coffeelog/api/coffee",
         })
         .then(function (response) {
             this.receivedData = (response.data)
