@@ -241,7 +241,6 @@ class StoreAPIView(views.APIView):
 
 class OnlyCoffeeAPIViewSet(viewsets.ReadOnlyModelViewSet):
     """Logのコーヒーの情報だけを取得するAPIViewSet(read_only)"""
-
     queryset = Log.objects.all()
     serializer_class = OnlyCoffeeDataSeriarizer
 

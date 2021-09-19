@@ -156,8 +156,14 @@ LOGIN_REDIRECT_URL = '/coffeelog'
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    # 'DEFAULT_THROTTLE_RATES': {
-    #         'anon': '1/day',
-    #         'user': '1/day'
-    #     }
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+        'rest_framework.throttling.ScopedRateThrottle',
+        ],
+    'DEFAULT_THROTTLE_RATES': {
+            'anon': '100/hour',
+            'user': '1000/hour',
+            'uploads': '2/day',
+        },
 }

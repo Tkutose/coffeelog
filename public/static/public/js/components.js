@@ -46,6 +46,7 @@ const postComponent = {
             </div>
                 <hr>
             1~5の5段階で感想を記入してください。
+            備考は任意項目です。追加でなにかあれば自由に記入できます。
             <div>苦味<input type="text" v-model:value="params.bitter"></div>
             <div>酸味<input type="text" v-model:value="params.acidity"></div>
             <div>香り<input type="text" v-model:value="params.smell"></div>
