@@ -10,15 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from rest_framework.throttling import UserRateThrottle
 import os
 import environ
 
-
 from pathlib import Path
 import dj_database_url
-from rest_framework import throttling
-import drf_spectacular
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -37,9 +33,6 @@ ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
 
 
 # Application definition
@@ -159,17 +152,12 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # ログイン処理後のリダイレクト先
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/coffeelog'
 
-# DRFの設定
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '1/day',
-        'user': '1/day'
-    },
+    # 'DEFAULT_THROTTLE_RATES': {
+    #         'anon': '1/day',
+    #         'user': '1/day'
+    #     }
 }
